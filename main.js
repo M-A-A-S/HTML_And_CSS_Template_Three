@@ -42,11 +42,17 @@ let section = document.querySelector(".our-skills");
 
 window.onscroll = function () {
   if (window.scrollY >= section.offsetTop - 200) {
-    progressSpans.forEach((span) => {
-      span.style.width = span.dataset.width;
-    });
+      progressSpans.forEach((span) => {
+          span.style.width = span.dataset.width;
+      });
   }
-};
+  if (window.scrollY >= statsSection.offsetTop) {
+    if (!started) {
+        nums.forEach(num => startCount(num));
+    }
+    started = true;
+}
+}
 
 // Increase Number on Scrolling
 
@@ -54,14 +60,14 @@ let nums = document.querySelectorAll(".stats .number");
 let statsSection = document.querySelector(".stats");
 let started = false; // Function Started ? No
 
-window.onscroll = function () {
-    if (window.scrollY >= section.offsetTop) {
-        if (!started) {
-            nums.forEach(num => startCount(num));
-        }
-        started = true;
-    }
-}
+// window.onscroll = function () {
+//     if (window.scrollY >= statsSection.offsetTop) {
+//         if (!started) {
+//             nums.forEach(num => startCount(num));
+//         }
+//         started = true;
+//     }
+// }
 
 function startCount(el) {
     let goal = el.dataset.goal;
