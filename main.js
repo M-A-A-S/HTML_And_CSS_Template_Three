@@ -3,7 +3,9 @@
 // The OF The Year Date To Countdown To
 // 1000 milliseconds = 1 Second
 
-let countDownDate = new Date("Dec 31, 2022, 23:59:59").getTime();
+let countDownDate = new Date(
+  "Dec 31, " + new Date().getFullYear() + ", 23:59:59"
+).getTime();
 
 console.log(countDownDate);
 
@@ -42,17 +44,17 @@ let section = document.querySelector(".our-skills");
 
 window.onscroll = function () {
   if (window.scrollY >= section.offsetTop - 200) {
-      progressSpans.forEach((span) => {
-          span.style.width = span.dataset.width;
-      });
+    progressSpans.forEach((span) => {
+      span.style.width = span.dataset.width;
+    });
   }
   if (window.scrollY >= statsSection.offsetTop) {
     if (!started) {
-        nums.forEach(num => startCount(num));
+      nums.forEach((num) => startCount(num));
     }
     started = true;
-}
-}
+  }
+};
 
 // Increase Number on Scrolling
 
@@ -70,11 +72,11 @@ let started = false; // Function Started ? No
 // }
 
 function startCount(el) {
-    let goal = el.dataset.goal;
-    let count = setInterval(() => {
-        el.textContent++;
-        if (el.textContent == goal) {
-            clearInterval(count);
-        }
-    }, 2000 / goal);
+  let goal = el.dataset.goal;
+  let count = setInterval(() => {
+    el.textContent++;
+    if (el.textContent == goal) {
+      clearInterval(count);
+    }
+  }, 2000 / goal);
 }
